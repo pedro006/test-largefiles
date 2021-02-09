@@ -26,6 +26,9 @@ collections: # A list of collections the CMS should be able to edit
     fields: # The fields each document in this collection have
       - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
       - {label: "Title", name: "title", widget: "string", tagname: "h1"}
+      - label: 'Cover Image'
+        name: 'image'
+        widget: 'image'
       - {label: "Meta Description", name: "meta_description", widget: "string", required: false}
       - label: "Author"
         name: "author"
