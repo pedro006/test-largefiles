@@ -9,6 +9,7 @@ media_folder: "assets/img/uploads" # Folder where user uploaded files should go
 
 media_library:
   name: cloudinary
+  output_filename_only: true
   config:
     cloud_name: etcassetscloud
     api_key: 586572194789611

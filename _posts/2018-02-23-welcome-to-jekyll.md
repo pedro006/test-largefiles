@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Welcome to Jekyll!
-image: https://res.cloudinary.com/etcassetscloud/image/upload/v1612908203/INTERIOR_AXON_Copy_2_iulusb.jpg
+image: INTERIOR_AXON_Copy_2_iulusb.jpg
 meta_description: A description may also be set in a post. You can find more
   information about it in pages/about.md.
 author: dan_urbanowicz
