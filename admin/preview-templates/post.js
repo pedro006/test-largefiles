@@ -12,6 +12,7 @@ const Post = createClass({
       <main>
         <article>
           <h1>${entry.getIn(["data", "title"], null)}</h1>
+          <img src="https://res.cloudinary.com/etcassetscloud/image/upload/w_auto,c_scale/${entry.getIn(["data", "image"], null)}">
           <p>
             <small>
               <time

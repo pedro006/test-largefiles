@@ -13,6 +13,11 @@ media_library:
   config:
     cloud_name: etcassetscloud
     api_key: 586572194789611
+    default_transformations:
+      - - fetch_format: auto
+          width: 160
+          quality: auto
+          crop: scale
 
 publish_mode: editorial_workflow # Enable drafts
 
