@@ -7,6 +7,12 @@ backend:
 
 media_folder: "assets/img/uploads" # Folder where user uploaded files should go
 
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: etcassetscloud
+    api_key: 586572194789611
+
 publish_mode: editorial_workflow # Enable drafts
 
 collections: # A list of collections the CMS should be able to edit
