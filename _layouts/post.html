@@ -16,6 +16,19 @@ layout: default
 
 {% include page-intro.html %}
 <img src="{{page.image}}"/>
+<img src="{{page.image}}-/resize/1000x/fallback.jpg"
+     srcset="{{page.image}}-/resize/320x/320.jpg 320w,
+             {{page.image}}-/resize/450x/450.jpg 450w,
+             {{page.image}}-/resize/640x/640.jpg 640w,
+             {{page.image}}-/resize/750x/750.jpg 750w,
+             {{page.image}}-/resize/800x/800.jpg 800w,
+             {{page.image}}-/resize/900x/900.jpg 900w,
+             {{page.image}}-/resize/1000x/-/quality/lighter/1000.jpg 1000w,
+             {{page.image}}-/resize/1200x/-/quality/lighter/1200.jpg 1200w,
+             {{page.image}}-/resize/1500x/-/quality/lighter/1500.jpg 1500w,
+             {{page.image}}-/resize/1600x/-/quality/lighter/1600.jpg 1600w,
+             {{page.image}}-/resize/2000x/-/quality/lightest/2000.jpg 2000w"
+     sizes="(min-width: 1000px) 50vw, 100vw">
 
 {{ content }}
 

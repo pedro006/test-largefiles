@@ -13,8 +13,6 @@ media_library:
     publicKey: 83248e7284162067b657
     multiple: true
 
-publish_mode: editorial_workflow # Enable drafts
-
 collections: # A list of collections the CMS should be able to edit
   # POSTS
   - name: "post" # Used in routes, ie.: /admin/collections/:slug/edit
