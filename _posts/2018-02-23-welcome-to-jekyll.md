@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Welcome to Jekyll!
-image: /assets/img/uploads/INTERIOR_AXON_yuwki2.jpg
+image:
+  - https://ucarecdn.com/96a3a862-18ec-4209-8e14-0396546ad361/
 meta_description: A description may also be set in a post. You can find more
   information about it in pages/about.md.
 author: dan_urbanowicz
