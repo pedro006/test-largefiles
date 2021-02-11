@@ -5,20 +5,49 @@ layout: compress
 <!DOCTYPE html>
 <html data-current="{{ page.section }}" lang="en">
 
-  {% include head.html %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% if page.section == 'home' %}
+  <title>{{ site.title }}</title>
+  {% else %}
+  <title>{{ page.title }}</title>
+  {% endif %}
+  {% if page.meta_description %}
+  <meta name="description" content="{{ page.meta_description }}">
+  {% else %}
+  <meta name="description" content="{{ page.info.text }}">
+  {% endif %}
 
-  <body>
+  {% if jekyll.environment == 'production' and site.analytics %}
+  {% include analytics.html %}
+  {% endif %}
 
-    {% include header.html %}
+  <link id="light-favicon" rel="shortcut icon" href="/assets/CLA-Favicon-Black.ico" />
+  <link id="dark-favicon" rel="shortcut icon" href="/assets/CLA-Favicon-White.ico" />
 
-    <main>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-      {{ content }}
+  <link rel="stylesheet" href="{{ "/assets/css/styles.css" | relative_url }}">
+</head>
 
-    </main>
 
-    {% include footer.html %}
+<body>
+  {% include modules/animation.html%}
 
-  </body>
+  {% include modules/menu/menu.html%}
+
+  <main id="swup" class="transition-fade">
+
+
+    {{ content }}
+
+    {% if page.formpage == false or page.formpage == null%}
+    {% include modules/footer.html %}
+    {% endif %}
+  </main>
+
+</body>
+{% include scripts.html %}
 
 </html>

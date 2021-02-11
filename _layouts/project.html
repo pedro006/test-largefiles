@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+{% include modules/project-header.html %}
+{% include modules/project-description.html %}
+{% include modules/project-process.html %}
+
+{%- capture order -%}
+  {%- for order in site.data.projectorder.project -%}
+    {{ order.item }}{%- if forloop.last == false -%},{%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- capture projects -%}
+  {%- for p in site.projects -%}
+    {{ p.title }}{%- if forloop.last == false -%},{%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- assign pageTitle = page.title -%}
+{%- assign order = order | split: ',' -%}
+{%- assign projects = projects | split: ',' -%}
+
+{%- assign all = order | concat: projects | uniq  -%}
+
+{% for links in all %}
+  {% if links == page.title %}
+    {% assign num = forloop.index %}
+  {% endif %}
+{% endfor %}
+
+{% if num == all.size %}
+  {% for links in all offset:0 limit:1 %}
+    {%- for project in site.projects -%}
+      {% if links == project.title %}
+        {%- capture url -%}projects/{{links | slugify }}{%- endcapture -%}
+        {% include modules/footer-cta.html title=links link=url %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+{% else %}
+  {% for links in all offset:num limit:1 %}
+    {%- for project in site.projects -%}
+      {% if links == project.title %}
+        {%- capture url -%}projects/{{links | slugify }}{%- endcapture -%}
+        {% include modules/footer-cta.html title=links link=url %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+{% endif %}

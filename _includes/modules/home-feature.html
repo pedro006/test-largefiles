@@ -1,0 +1,36 @@
+<div class="module">
+
+  <h1 data-fadein class="statement">{{page.statement | replace: "'", "’"}}
+  </h1>
+
+  {% for project in site.projects %}
+  {% if project.title == page.featured_projects.feature_one %}
+  <a data-fadein href="{{project.url}}" class="grid-link ">
+    {% include image/image_header.html path=project.featured_image %}
+    <div class="caption">{{ project.title | replace: "'", "’" }}</div>
+  </a>
+  {% endif %}
+  {% endfor %}
+
+  <div class="vertical-flex">
+    <div class="row">
+      {% for project in site.projects %}
+      {% if project.title == page.featured_projects.feature_two %}
+      <a data-fadein href="{{project.url}}" class="grid-link ">
+        {% include image/image_header.html path=project.featured_image %}
+        <div class="caption">{{ project.title | replace: "'", "’" }}</div>
+      </a>
+      {% endif %}
+      {% endfor %}
+      {% for project in site.projects %}
+      {% if project.title == page.featured_projects.feature_three %}
+      <a data-fadein href="{{project.url}}" class="grid-link ">
+        {% include image/image_header.html path=project.featured_image %}
+        <div class="caption">{{ project.title | replace: "'", "’" }}</div>
+      </a>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,54 @@
+<div class="module">
+  <div class="header-top">
+    <h1>Contact us</h1>
+  </div>
+  <div class="content">
+    <div class="left-column">
+      <h2>New business</h2>
+      <a href="/contact/new-business" class="contact-link">{{page.contact_us.newbusiness_text | replace: "'", "’"}}</a>
+      <h2>General</h2>
+      <a href="/contact/general" class="contact-link">{{page.contact_us.general_text | replace: "'", "’"}}</a>
+      <h2>Careers</h2>
+      <a href="#joinus" class="contact-link joinus">{{page.contact_us.careers_text}}</a>
+    </div>
+    <div class="right-column">
+      {% assign contactGallery = page.contact_us.contact_images %}
+      {% if contactGallery.size == 1 %}
+      {% for image in contactGallery %}
+      {% include image/image.html path=image %}
+      {% endfor %}
+      {% else %}
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          {% for image in contactGallery %}
+          {% include image/image.html path=image type='slide' %}
+          {% endfor %}
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<div id="joinus" class="module">
+  <div class="header-top">
+    <h1>Join us</h1>
+  </div>
+  <div class="content">
+    <div class="left-column">
+      <p>{{page.joinus.join_statement}}</p>
+      {% for job in site.joblisting %}
+      {% if job.title %}
+      <a href="{{job.url}}" class="job-link">{{job.title}}</a>
+      {% else %}
+      No job opening at the moment.
+      {% endif %}
+      {% endfor %}
+    </div>
+    <div class="right-column">
+      {% include image/image.html path=page.joinus.join_image %}
+    </div>
+  </div>
+</div>

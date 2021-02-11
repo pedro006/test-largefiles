@@ -1,0 +1,28 @@
+{% assign post_one = site.posts[0] %}
+{% assign post_two = site.posts[1] %}
+{% assign post_three = site.posts[2] %}
+
+<div data-scroll="background" class="module news-feature">
+  <h1 data-fadein>News</h1>
+  <div class="vertical-flex">
+    <div class="row">
+      <a data-fadein href="/news#{{post_one.title | slugify}}" class="grid-link">
+
+        {% assign imageOne = post_one.images[0] %}
+        {% include image/image_header.html path=imageOne %}
+
+        <div class="caption">{{post_one.title}}</div>
+      </a>
+      <a data-fadein href="/news#{{post_two.title | slugify}}" class="grid-link">
+        {% assign imageTwo = post_two.images[0] %}
+        {% include image/image_header.html path=imageTwo %}
+        <div class="caption">{{post_two.title}}</div>
+      </a>
+    </div>
+  </div>
+  <a data-fadein href="/news#{{post_three.title | slugify}}" class="grid-link smaller-max">
+    {% assign imageThree = post_three.images[0] %}
+    {% include image/image_header.html path=imageThree %}
+    <div class="caption">{{post_three.title}}</div>
+  </a><a data-fadein="true" href="/news" class="button w-button">Read more</a>
+</div>

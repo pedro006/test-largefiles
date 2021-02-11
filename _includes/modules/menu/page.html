@@ -1,0 +1,44 @@
+<div class="module menu-module">
+    <div class="menu-top">
+        <a href="/about" class="menu-link">About</a>
+
+        <a id="contact-button-grid" href="/contact" class="contact-button">
+            <div>Contact Us</div>
+        </a>
+
+        <a href="/news" class="menu-link">News</a>
+
+        <div id="line-divider-grid" class="line-divider"></div>
+
+    </div>
+    <div class="menu-bottom">
+        <a href="#" class="menu-link">Projects</a>
+        <div class="w-layout-grid project-grid">
+
+            {%- capture order-%}
+            {%- for order in site.data.projectorder.project -%}{{ order.item }}{%- if forloop.last == false -%},{%- endif -%}{%- endfor -%}
+            {%- endcapture -%}
+
+            {%- capture projects -%}
+            {%- for p in site.projects -%}{{ p.title }}{%- if forloop.last == false -%},{%- endif -%}{%- endfor -%}
+            {%- endcapture -%}
+
+            {%- assign order = order | split: ',' -%}
+            {%- assign projects = projects | split: ',' -%}
+
+            {%- assign all = order | concat: projects | uniq  -%}
+
+            {%- for item in all  -%}
+            {%- for project in site.projects -%}
+            {%- if item == project.title -%}
+            <a href="{{project.url}}" class="project-grid-link">
+                {% include image/image.html path=project.featured_image type='cover' %}
+                <div class="caption">{{project.title}}</div>
+            </a>
+            {%- endif -%}
+            {%- endfor -%}
+            {%- endfor -%}
+            
+        </div>
+    </div>
+</div>

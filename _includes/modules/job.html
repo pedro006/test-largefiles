@@ -1,0 +1,17 @@
+<div id="job-{{include.subject | slugify }}" class="module light-module">
+    <div class="header-top">
+        <h1>{{include.subject}}</h1>
+    </div>
+    <div class="job-container">
+        <div class="job-paragraph">
+            <div>
+                {{ page.intro | markdownify }}
+            </div>
+            <div>
+                {{ page.description | markdownify }}
+            </div>
+        </div>
+        <button class="form-button apply-button" data-job="{{ include.subject | slugify }}">Apply for
+            this position</button>
+    </div>
+</div>

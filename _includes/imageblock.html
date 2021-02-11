@@ -1,0 +1,9 @@
+{% responsive_image_block %}
+path: {{ include.path | replace: '/assets', 'assets' }}
+{% if include.type %}
+type: '{{include.type}}'
+{% endif %}
+{% if include.template %}
+template: {{include.template}}
+{% endif %}
+{% endresponsive_image_block %}

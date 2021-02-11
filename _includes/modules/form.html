@@ -1,0 +1,39 @@
+<div class="module light-module" id="module-{{include.subject | slugify}}"
+    {% if page.jobpage == true %}style="display: none;" {% endif %}>
+    <div class="header-top">
+        <h1>{{include.subject}}</h1>
+    </div>
+    <div class="form-block w-form">
+        <form action="" method="POST" id="form-{{include.subject | slugify }}"
+            name="{% if page.jobpage %}Jobs{% else %}{{include.subject }}{% endif %}" netlify="true">
+            <div class="form-grid">
+                <input type="text" class="input-field " name="First-Name" placeholder="First Name" id="First-Name"
+                    required="true">
+                <input type="text" class="input-field " name="Last-Name" placeholder="Last Name" id="Last-Name"
+                    required="true">
+                <input type="email" class="input-field " name="Email" placeholder="Email" id="Email" required="true">
+                {% if page.jobpage %}
+                <label class="input-field" for="File">Add attachments</label>
+                <input type="file" class="input-field file-input" name="File" id="File" required="true">
+                {% else %}
+                <input type="text" class="input-field " name="Company-Organization" placeholder="Company / Organization"
+                    id="Company-Organization">
+                {% endif %}
+            </div>
+
+            <textarea class="input-field" style="resize:none; height: 100%; width: 100%;" name="message" rows="3"
+                placeholder="Message"></textarea>
+            <div class="textarea-line">
+
+            </div>
+
+            <input type="submit" id="submit-button" value="Submit" data-wait="Please wait..." class="form-button">
+        </form>
+        <div class="success-message w-form-done">
+            <div>Thank you! Your submission has been received!</div>
+        </div>
+        <div class="error-message w-form-fail">
+            <div>Oops! Something went wrong while submitting the form.</div>
+        </div>
+    </div>
+</div>

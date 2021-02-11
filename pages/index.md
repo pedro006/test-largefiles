@@ -1,12 +1,12 @@
 ---
 layout: home
-title: Welcome
 permalink: /
+title: Home
 section: home
-intro_paragraph: >
-  [Jekyll Netlify Boilerplate](https://github.com/danurbanowicz/jekyll-netlify-boilerplate)
-  provides the basics to get a fast, static website deployed on Netlify.
-  Features [Netlify CMS](https://www.netlifycms.org), responsive
-  CSS Grid layout, sample
-  pages and posts, and a continuous deployment workflow.
+statement: "We believe that well built spaces can connect, inspire and create meaning. "
+featured_projects:
+  feature_one: Shelter Island House
+  feature_two: A-Frame
+  feature_three: Bennington College Commons
+meta_description: We believe that well built spaces can connect, inspire and create meaning.
 ---

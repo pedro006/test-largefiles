@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+{% assign subpage = site.pages | where: 'section', 'contact' %}
+
+{% if page.jobpage == true %}
+{% assign subject = page.title | replace: "'", "’" %}
+{% elsif page.formpage == true%}
+{% for item in subpage %}
+{% if page.title == 'New Business' %}
+{% assign subject = item.contact_us.newbusiness_text | replace: "'", "’" %}
+{% else if page.title == 'General' %}
+{% assign subject = item.contact_us.general_text | replace: "'", "’" %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if page.jobpage == true %}
+{% include modules/job.html subject=subject %}
+{% endif %}
+{% include modules/form.html subject=subject %}

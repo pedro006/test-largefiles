@@ -1,0 +1,40 @@
+{% if page.process_section %}
+<div data-scroll="parallax" class="module grey-background">
+  <div class="header">Project Process</div>
+  <div class="container">
+    {% for section in page.process_section %}
+    {% if section.type == 'two_column_big_small' %}
+    <div class="process-grid">
+      <div data-fadein class="process-item">
+        {% include image/image.html path=section.image_left %}
+        <div class="caption">{{section.caption_left}}</div>
+      </div>
+      <div data-fadein class="process-item">
+        {% include image/image.html path=section.image_right type='grid' %}
+        <div class="caption">{{section.caption_right}} </div>
+      </div>
+    </div>
+    {% elsif section.type == 'one_column'%}
+    <div class="process-one">
+      <div data-fadein class="process-item">
+        {% include image/image.html path=section.image %}
+        <div class="caption">{{section.caption}}</div>
+      </div>
+    </div>
+    {% elsif section.type == 'two_column_small_big'%}
+    <div class="process-grid inverted">
+      <div data-fadein class="process-item">
+        {% include image/image.html path=section.image_left %}
+
+        <div class="caption">{{section.caption-left}}</div>
+      </div>
+      <div data-fadein class="process-item">
+        {% include image/image.html path=section.image_right type='grid' %}
+        <div class="caption">{{section.caption_right}}</div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

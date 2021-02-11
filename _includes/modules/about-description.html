@@ -1,0 +1,30 @@
+<div id="approach" class="module">
+  {% for description in page.description %}
+  <div class="horiztonal-flex {% if forloop.last == false %}content-spacing{% endif %}">
+    <div class="left-column ghost"></div>
+    <div class="left-column about-column">
+      <p>{{ description.text }}</p>
+    </div>
+    <div class="right-column">
+      {% for gallery in description.image_gallery %}
+      <div data-fadein class="section-content {% if forloop.last == false %}content-spacing{% endif %}">
+        {% if gallery.type == 'carousel' %}
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            {% for image in gallery.images %}
+            {% include image/image.html path=image type='slide' %}
+            {% endfor %}
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+        {% elsif gallery.type == 'single_image' %}
+        {% include image/image.html path=gallery.image %}
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</div>

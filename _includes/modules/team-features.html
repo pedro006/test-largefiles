@@ -1,0 +1,16 @@
+<div id="team" data-scroll="parallax" class="module grey-background">
+  <h1>Team</h1>
+
+  <div class="team-grid">
+      {% for person in page.team %}
+    <div data-fadein class="grid-link">
+      <div class="profile-image" style="background-image: url({{person.image}});">
+      </div>
+      <h2>{{person.title}}</h2>
+      <h2 class="header">{{person.job_title}}</h2>
+      <p>{{person.bio}}</p>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>

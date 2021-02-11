@@ -1,0 +1,71 @@
+<div data-scroll="project" class="module dark-mode">
+  <div class="horiztonal-flex">
+    <div class="left-column ghost"></div>
+    <div data-fadein class="left-column project-column">
+      <div class="header">{{page.title}}</div>
+      <div class="tab">
+        <div class="tab-content tab-text">
+          <p>{{page.info.text | replace: "'", "’"}}</p>
+        </div>
+        {% if page.info.details %}
+        <div class="tab-content tab-details">
+          {% for detail in page.info.details %}
+          <span class="title-detail">{{detail.header}}</span>
+          <br>
+          {{detail.text | replace: "'", "’"}}
+          <br>
+          <br>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if page.info.testimonial %}
+        <div class="tab-content tab-testimonials">
+          <p>{{page.info.testimonial | replace: "'", "’"}}
+          </p>
+        </div>
+        {% endif %}
+        <div class="tab-menu">
+          <div data-tab="openTab(event, 'text')" class="tab-link active-link ">
+            <div class="circle"></div>
+            <div>Text</div>
+          </div>
+          {% if page.info.details %}
+          <div data-tab="openTab(event, 'details')" href="#" class="tab-link ">
+            <div class="circle"></div>
+            <div>Details</div>
+          </div>
+          {% endif %}
+          {% if page.info.testimonial %}
+          <div data-tab="openTab(event, 'testimonials')" href="#" class="tab-link ">
+            <div class="circle"></div>
+            <div>Testimonials</div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="right-column">
+      {% for section in page.image_section %}
+      {% if section.type == 'carousel' %}
+      <div data-fadein class="project-content">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            {% for image in section.images %}
+            {% include image/image.html path=image type='slide' %}
+            {% endfor %}
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+      {% else %}
+      <div data-fadein class="project-content">
+        {% include image/image.html path=section.image %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

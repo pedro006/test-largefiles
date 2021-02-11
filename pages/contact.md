@@ -3,13 +3,26 @@ layout: contact
 title: Contact
 permalink: /contact
 section: contact
-intro_paragraph: |-
+contact_us:
+  newbusiness_text: Let's colaborate
+  careers_text: See open positions
+  general_text: Get in touch
+  contact_images:
+    - /assets/img/classrooms.jpg
+    - /assets/img/north-entry-interior.jpg
+joinus:
+  join_statement: >-
+    People are the soul of CL Architects, united by rigor, curiosity, kindness,
+    courage, and care. Together, we're committed to creating great work and
+    living great lives.
 
-  The contact form on this page uses
-  [Netlify Forms](https://www.netlify.com/docs/form-handling/) to process
-  submissions, and saves them in your Netlify account where you can optionally
-  set up notifications. Each submission is passed through a spam filter and if
-  flagged, will display a CAPTCHA challenge to the user.
+
+    See below if you want to join our team or are interested in being part of our broader talent community.
+  join_image: /assets/img/north_classroom.jpg
+  job_listing:
+    - position: Architect
+      description: Lorem Ipsum
+meta_description: People are the soul of CL Architects, united by rigor,
+  curiosity, kindness, courage, and care. Together, we're committed to creating
+  great work and living great lives.
 ---
-
-**Send us a message**

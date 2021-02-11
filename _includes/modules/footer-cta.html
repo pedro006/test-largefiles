@@ -1,0 +1,6 @@
+{% assign link = include.link %}
+{% assign title = include.title %}
+
+<a href="/{{link}}" class="module large-cta">
+  <h1>{{title | replace: "'", "’"}}</h1>
+</a>

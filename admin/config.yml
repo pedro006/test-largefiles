@@ -13,43 +13,277 @@ media_library:
     publicKey: 83248e7284162067b657
     multiple: true
 
+logo_url: /assets/img/CLA.png
+
+# when using the default proxy server port
+local_backend: false
+
+show_preview_links: false
+
 collections: # A list of collections the CMS should be able to edit
-  # POSTS
-  - name: "post" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Post" # Used in the UI, ie.: "New Post"
-    folder: "_posts" # The path to the folder where the documents are stored
+    # PAGES
+  - label: "Pages"
+    name: "pages"
+    editor:
+      preview: false
+    files:
+      - label: "Home"
+        name: "home"
+        file: "pages/index.md"
+        fields:
+          - {label: Layout, name: layout, widget: hidden, default: home }
+          - {label: Permalink, name: permalink, widget: hidden, default: "/" }
+          - {label: Title, name: title, widget: hidden, default: Home}
+          - {label: Statement, name: statement, widget: text}
+          - label: "Featured Projects"
+            name: "featured_projects"
+            collapsed: true
+            widget: "object"
+            fields:
+              - label: "Feature 1"
+                name: "feature_one"
+                widget: "relation"
+                collection: "projects"
+                multiple: false
+                searchFields: ["title"]
+                valueField: "title"
+                displayFields: ["title"]
+              - label: "Feature 2"
+                name: "feature_two"
+                widget: "relation"
+                collection: "projects"
+                multiple: false
+                searchFields: ["title"]
+                valueField: "title"
+                displayFields: ["title"]
+              - label: "Feature 3"
+                name: "feature_three"
+                widget: "relation"
+                collection: "projects"
+                multiple: false
+                searchFields: ["title"]
+                valueField: "title"
+                displayFields: ["title"]
+          - { label: Meta description, name: meta_description, widget: text, required: true, hint: "Provide a brief description about your practice. This description is important, it is the main info about the site." }
+      - label: "About"
+        name: "about"
+        file: "pages/about.md"
+        fields:
+          - {label: Layout, name: layout, widget: hidden, default: about }
+          - {label: Permalink, name: permalink, widget: hidden, default: "/about" }
+          - {label: Title, name: title, widget: hidden, default: About}
+          - label: Page Header
+            name: page_header
+            widget: object
+            collapsed: true
+            fields:
+              - {label: Statement, name: statement, widget: text}
+              - label: "Featured Image"
+                name: "featured_image"
+                widget: "image"
+          - label: "Description"
+            name: "description"
+            widget: "list"
+            fields:
+              - {label: "Text", name: "text", widget: "text", default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."}
+              - label: "Image Gallery"
+                name: "image_gallery"
+                widget: "list"
+                types:
+                  - label: 'Carousel'
+                    name: 'carousel'
+                    widget: 'object'
+                    fields:
+                      - label: "Images"
+                        name: "images"
+                        widget: "list"
+                        label_singular: "an Image"
+                        field: {label: Image, name: image, widget: image,   default: "/assets/img/placeholder.png"}
+                  - label: 'Image'
+                    name: 'single_image'
+                    widget: 'object'
+                    fields:
+                      - {label: Image, name: image, widget: image,   default: "/assets/img/placeholder.png"}
+          - label: Team
+            name: team
+            widget: list
+            fields:
+              - {label: "Name", name: "title", widget: "string"}
+              - {label: "Title", name: "job_title", widget: "string"}
+              - {label: "Bio", name: "bio", widget: "text"}
+              - label: "Image"
+                name: "image"
+                widget: "image"
+                media_library:
+                  config:
+                    multiple: true
+          - {label: Meta description, name: meta_description, widget: text, required: true, hint: 'Provide a brief description about your page.'}
+      - label: "Contact"
+        name: "contact"
+        file: "pages/contact.md"
+        fields:
+          - label: Contact Us
+            name: contact_us
+            widget: object
+            collapsed: true
+            fields:
+              - {label: New Business, name: newbusiness_text, widget: "string"}
+              - {label: Careers, name: careers_text, widget: "string"}
+              - {label: General, name: general_text, widget: "string"}
+              - label: "Contact Images"
+                name: "contact_images"
+                widget: "list"
+                label_singular: "an Image"
+                field: {label: Image, name: image, widget: image}
+          - label: Join us
+            name: joinus
+            widget: object
+            collapsed: true
+            fields:
+              - {label: Statement, name: join_statement, widget: "text"}
+              - {label: Image, name: join_image, widget: image }
+          - {label: Meta description, name: meta_description, widget: text, required: true, hint: 'Provide a brief description about your page.'}
+  # Project Collection
+  - label: "Projects"
+    name: "projects"
+    folder: "collections/_projects"
+    create: true
+    label_singular: "Project"
+    extension: "md"
+    editor:
+      preview: false
+    preview_path: "/projects/{{title}}"
+    slug: '{{title}}'
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "project" }
+      - {label: "Title", name: "title", widget: "string", tagname: "h1"}
+      - label: "Featured Image"
+        name: "featured_image"
+        widget: "image"
+        media_library:
+          config:
+            multiple: true
+      - label: "Featured Image Mobile"
+        name: "featured_image_mobile"
+        widget: "image"
+        media_library:
+          config:
+            multiple: true
+      - label: "Project Info"
+        name: "info"
+        widget: "object"
+        fields:
+          - {label: "Text", name: "text", widget: "text", required: true, hint: 'This description is used for the meta description of the page.'}
+          - label: "Details"
+            name: "details"
+            minimize_collapsed: true
+            widget: "list"
+            fields:
+              - {label: Header, name: header, widget: string}
+              - {label: Text, name: text, widget: string }
+          - {label: "Testimonial", name: "testimonial", widget: "text", required: false}
+      - label: "Image Section"
+        name: "image_section"
+        widget: "list"
+        minimize_collapsed: true
+        types:
+          - label: 'Carousel'
+            name: 'carousel'
+            widget: 'object'
+            fields:
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                label_singular: "an Image"
+                field: {label: Image, name: image, widget: image }
+          - label: 'Image'
+            name: 'single_image'
+            widget: 'object'
+            fields:
+              - {label: Image, name: image, widget: image }
+      - label: "Process Section"
+        name: "process_section"
+        widget: "list"
+        minimize_collapsed: true
+        types:
+          - label: 'One column'
+            name: 'one_column'
+            widget: 'object'
+            fields:
+              - {label: Image, name: image, widget: image}
+              - {label: Caption, name: caption, widget: string, required: false}
+          - label: 'Two column: Big – Small'
+            name: 'two_column_big_small'
+            widget: 'object'
+            fields:
+              - {label: Left Image, name: image_left, widget: image}
+              - {label: Caption, name: caption_left, widget: string, required: false}
+              - {label: Right Image, name: image_right, widget: image}
+              - {label: Caption, name: caption_right, widget: string, required: false}
+          - label: 'Two column: Small – Big'
+            name: 'two_column_small_big'
+            widget: 'object'
+            fields:
+              - {label: Left Image, name: image_left, widget: image}
+              - {label: Caption, name: caption_left, widget: string, required: false}
+              - {label: Right Image, name: image_right, widget: image}
+              - {label: Caption, name: caption_right, widget: string, required: false}
+  # NEWS
+  - name: "news" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "News" # Used in the UI, ie.: "New Post"
+    folder: "collections/_posts" # The path to the folder where the documents are stored
     sort: "date:desc" # Default is title:asc
+    label_singular: "Post"
     create: true # Allow users to create new documents in this collection
+    editor:
+      preview: false
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields: # The fields each document in this collection have
-      - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "news", }
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        default: ""
+        date_format: "DD.MM.YYYY" # e.g. 24.12.2021
+        time_format: false
+        format: "LLL"
+        picker_utc: false
       - {label: "Title", name: "title", widget: "string", tagname: "h1"}
-      - label: 'Cover Image'
-        name: 'image'
-        widget: 'image'
-      - {label: "Meta Description", name: "meta_description", widget: "string", required: false}
-      - label: "Author"
-        name: "author"
-        widget: "select"
-        options:
-          - { label: "Dan Urbanowicz", value: "dan_urbanowicz" }
-          - { label: "John Doe", value: "john_doe" }
-      - {label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD HH:mm:ss"}
-      - {label: "Intro Paragraph", name: "intro_paragraph", widget: "markdown", required: false}
-      - {label: "Body", name: "body", widget: "markdown", required: false}
-      - {label: "Categories", name: "categories", widget: "string", required: false}
-    # PAGES
-  - name: "page"
-    label: "Page"
-    folder: "pages"
-    sort: "title:asc"
-    create: false
-    slug: "{{slug}}"
+      - {label: "Description", name: "description", widget: "markdown", minimal: true, buttons: ['link'], required: false}
+      - label: "Images"
+        name: "images"
+        widget: "list"
+        label_singular: "an Image"
+        field: {label: Image, name: image, widget: image }
+  # Project Collection
+  - label: "Job Listing"
+    name: "joblisting"
+    folder: "collections/_joblisting"
+    create: true
+    label_singular: "Job post"
+    extension: "md"
+    editor:
+      preview: false
+    preview_path: "/contact/{{title}}"
+    slug: '{{title}}'
     fields:
-      - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
-      - {label: "Title", name: "title", widget: "string", tagname: "h1"}
-      - {label: "Meta Description", name: "meta_description", widget: "string", required: false}
-      - {label: "Permalink", name: "permalink", widget: "hidden"}
-      - {label: "Section", name: "section", widget: "hidden", default: "{{name}}"}
-      - {label: "Intro Paragraph", name: "intro_paragraph", widget: "markdown", required: false}
-      - {label: "Body", name: "body", widget: "markdown", required: false}
+      - {label: Position, name: title, widget: string, default: "Architect"}
+      - {label: Intro, name: intro, widget: markdown, minimal: true, buttons: ['bold', 'italic', 'link', 'bulleted-list', 'quote', 'numbered-list'] }
+      - {label: Description, name: description, widget: markdown, minimal: true, buttons: ['bold', 'italic', 'link', 'bulleted-list', 'quote', 'numbered-list'] }
+  - name: menu
+    label: Menu
+    files:
+      - name: project_order
+        label: Project Order
+        file: _data/projectorder.yml
+        fields:
+          - label: Project
+            name: project
+            widget: list
+            fields:
+              - label: Project Item
+                name: item
+                widget: relation
+                collection: projects
+                searchFields: [title]
+                valueField: title

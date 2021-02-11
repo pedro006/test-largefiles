@@ -1,11 +1,10 @@
 @charset "utf-8";
 
 @import
-  "partials/fonts",
-  "partials/variables",
-  "partials/mixins",
+  "https://unpkg.com/swiper@6.2.0/swiper-bundle.min.css",
   "partials/normalize",
-  "partials/utilities",
-  "partials/typography",
-  "partials/app"
+  "partials/webflow",
+  "partials/cla-dev",
+  "partials/new",
+  "partials/swiper-custom"
 ;

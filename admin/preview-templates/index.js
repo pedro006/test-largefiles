@@ -5,7 +5,7 @@ import Page from "/admin/preview-templates/page.js";
 CMS.registerPreviewTemplate("blog", Post);
 CMS.registerPreviewTemplate("pages", Page);
 
-CMS.registerPreviewStyle("/assets/main.css");
+CMS.registerPreviewStyle("/assets/css/styles.css");
 // Register any CSS file on the home page as a preview style
 fetch("/")
   .then(response => response.text())
